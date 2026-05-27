@@ -1,8 +1,8 @@
 # Impact of COVID-19 Lockdowns on Air Quality in Bangladesh: Analysis and AQI Forecasting with SVR
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_GITHUB_USERNAME/aqi-covid19-bangladesh/blob/main/AQI_COVID19_Bangladesh.ipynb)
-[![IEEE](https://img.shields.io/badge/IEEE-INCET%202023-blue?logo=ieee&logoColor=white)](https://doi.org/10.1109/INCET57972.2023.10170636)
 [![Dataset](https://img.shields.io/badge/Dataset-CASE%20Project-green)](https://github.com/TSGreen/bangladesh-air-quality)
+[![ResearchGate](https://img.shields.io/badge/ResearchGate-Paper-00CCBB?logo=researchgate%26logoColor=white)](https://www.researchgate.net/publication/372261119_Impact_of_COVID-19_Lockdowns_on_Air_Quality_in_Bangladesh_Analysis_and_AQI_Forecasting_with_Support_Vector_Regression)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green)](https://www.python.org/)
 
 > **Published at:** IEEE INCET 2023 — 4th International Conference for Emerging Technology, Belgaum, India  
