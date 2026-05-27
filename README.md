@@ -7,7 +7,7 @@
 
 > **Published at:** IEEE INCET 2023 — 4th International Conference for Emerging Technology, Belgaum, India  
 > **Authors:** Mohammed Tahmid Hossain, Afra Hossain, Sabrina Masum Meem, Md Fahad Monir, Md Saef Ullah Miah, Talha Bin Sarwar  
-> **Institutions:** Independent University, Bangladesh · AIUB · Universiti Malaysia Pahang
+> **Institutions:** Independent University, Bangladesh 
 
 ---
 
