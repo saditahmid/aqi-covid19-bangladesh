@@ -5,7 +5,7 @@
 [![ResearchGate](https://img.shields.io/badge/ResearchGate-Paper-00CCBB?logo=researchgate%26logoColor=white)](https://www.researchgate.net/publication/372261119_Impact_of_COVID-19_Lockdowns_on_Air_Quality_in_Bangladesh_Analysis_and_AQI_Forecasting_with_Support_Vector_Regression)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green)](https://www.python.org/)
 
-> **Published at:** IEEE INCET 2023 — 4th International Conference for Emerging Technology, Belgaum, India  
+> **Published at:** IEEE INCET 2023
 > **Authors:** Mohammed Tahmid Hossain, Afra Hossain, Sabrina Masum Meem, Md Fahad Monir, Md Saef Ullah Miah, Talha Bin Sarwar  
 > **Institutions:** Independent University, Bangladesh 
 
