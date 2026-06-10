@@ -4,24 +4,24 @@
 [![Dataset](https://img.shields.io/badge/Dataset-CASE%20Project-green)](https://github.com/TSGreen/bangladesh-air-quality)
 [![ResearchGate](https://img.shields.io/badge/ResearchGate-Paper-00CCBB?logo=researchgate%26logoColor=white)](https://www.researchgate.net/publication/372261119_Impact_of_COVID-19_Lockdowns_on_Air_Quality_in_Bangladesh_Analysis_and_AQI_Forecasting_with_Support_Vector_Regression)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green)](https://www.python.org/)
- 
-> **Published at:** *IEEE INCET 2023*  
-> **Institution:** Independent University, Bangladesh  
-> **Authors:** Mohammed Tahmid Hossain, Afra Hossain, Sabrina Masum Meem, Md Fahad Monir, Md Saef Ullah Miah, Talha Bin Sarwar
- 
 
+> **Published at:** *IEEE INCET 2023*
+> **Institution:** Independent University, Bangladesh       
+> **Authors:** Mohammed Tahmid Hossain, Afra Hossain, Sabrina Masum Meem, Md Fahad Monir, Md Saef Ullah Miah, Talha Bin Sarwar
 
 ---
 
 ## Overview
 
-This repository contains the full reproducible code for our IEEE INCET 2023 paper analyzing Air Quality Index (AQI) trends across **10 major cities in Bangladesh** before, during, and after the COVID-19 lockdown, and forecasting AQI using **Support Vector Regression (SVR)**.
+This repository contains a **reproducible reconstruction** of our IEEE INCET 2023 paper analyzing Air Quality Index (AQI) trends across **10 major cities in Bangladesh** before, during, and after the COVID-19 lockdown, and forecasting AQI using **Support Vector Regression (SVR)**.
 
-### Key Findings
-- **AQI significantly decreased during COVID-19 lockdown (2020)** — highest AQI in 2020 was lower than 2019 or 2021
+> **⚠️ Reproducibility note:** the original research code was lost; this notebook re-implements the methodology exactly as documented in the paper (Sections III–V). The publicly available snapshot of the CASE dataset currently ends **June 5, 2021**, whereas the paper used data through **July 6, 2022**, so the SVR test window here is truncated and the resulting MAPE is not directly comparable to the paper's (details below). Notably, the reconstructed national daily-mean AQI values **exactly match the actual values in the paper's Table II** (e.g. 46.5 on 2014-09-02, 230.75 on 2015-01-01), validating the preprocessing pipeline.
+
+### Key Findings (from the paper)
+- **AQI decreased during the COVID-19 lockdown (2020)** — the highest AQI in 2020 was lower than in 2019 or 2021, and the lockdown-period mean was below the pre-COVID mean
 - **AQI is higher from December–March** (dry season, low rainfall)
-- **Dhaka** had the highest AQI (170–190 pre-COVID, dropped to 150 during lockdown, rose to 250 post-lockdown)
-- **SVR achieves MAPE ≈ 6.2%** — good and acceptable accuracy for AQI forecasting
+- **Dhaka is the most consistently polluted major city** (avg AQI 170–190 pre-COVID, ~150 during lockdown, ~250 post-lockdown)
+- **SVR achieved MAPE ≈ 6.2%** on the paper's full Jan 2021 – Jun 2022 test window
 
 ---
 
@@ -29,21 +29,23 @@ This repository contains the full reproducible code for our IEEE INCET 2023 pape
 
 ### SVR Model Performance
 
-| Metric | Value |
-|:---:|:---:|
-| **MAPE** | **~6.2%** |
-| Kernel | RBF |
-| gamma | 0.5 |
-| C | 10 |
-| epsilon | 0.05 |
+| Metric | Paper | This reconstruction |
+|:---:|:---:|:---:|
+| **MAPE** | **~6.2%** (test: Jan 2021 – Jun 2022) | **~12.5%** (test truncated to Jan–Jun 2021)* |
+| Kernel | RBF | RBF |
+| gamma | 0.5 | 0.5 |
+| C | 10 | 10 |
+| epsilon | 0.05 | 0.05 |
 
-> MAPE < 5% = perfectly accurate · 10–25% = low but acceptable. Our **6.2% is considered good**.
+\* The current public dataset snapshot ends 2021-06-05, so the reconstruction's test window covers only 131 days, falling almost entirely in the hard-to-forecast dry season. MAPE < 5% is considered perfectly accurate; 10–25% low but acceptable.
 
 ![Actual vs Predicted AQI](fig_actual_vs_predicted_aqi.png)
 
 ---
 
 ## City-Level Analysis
+
+Values summarized from the paper's Section V-B. Per the paper, the dataset lacked pre-2020 records for Narsingdhi and 2020 records for Sylhet, so those bars are marked "no data".
 
 ![City AQI Comparison](fig_city_aqi_comparison.png)
 
@@ -59,41 +61,41 @@ This repository contains the full reproducible code for our IEEE INCET 2023 pape
 | 51–100 | Moderate | Acceptable; some concern for sensitive groups |
 | 101–150 | Caution | Sensitive groups may experience health effects |
 | 151–200 | Unhealthy | Everyone may experience health hazards |
-| 200–300 | Very Unhealthy | Entire population may experience serious effects |
+| 201–300 | Very Unhealthy | Entire population may experience serious effects |
 | 301–500 | Extremely Unhealthy | Everyone likely to be affected |
 
 ---
 
 ## Dataset
 
-**Clean Air and Sustainable Environment (CASE) Project**  
-Ministry of Environment and Forest, Government of Bangladesh  
+**Clean Air and Sustainable Environment (CASE) Project**
+Ministry of Environment and Forest, Government of Bangladesh
 GitHub: https://github.com/TSGreen/bangladesh-air-quality
 
-- **Period:** February 17, 2014 – July 6, 2022
-- **~26,000 rows**
-- **5 columns:** Date · Location · AQI · AQI Category · Range
-- **10 cities:** Barishal · Chittagong · Cumilla · Dhaka · Gazipur · Khulna · Mymensingh · Narayanganj · Narsingdhi · Rajshahi · Sylhet
+- **File used:** `data/bronze/case/case_data.csv` (raw; the paper's preprocessing is applied in the notebook). A pre-cleaned alternative exists at `data/silver/case/case_data_clean.csv`.
+- **Period (paper):** February 17, 2014 – July 6, 2022 · **Period (current repo snapshot):** February 17, 2014 – June 5, 2021
+- **~24,000 rows · 5 columns:** Date · Location · AQI · AQI Category · Range
+- **Study area (10 cities, Figs. 3–12):** Barishal · Chittagong · Cumilla · Dhaka · Gazipur · Khulna · Mymensingh · Narsingdhi · Rajshahi · Sylhet (Narayanganj is also present in the data and retained for national statistics)
 
 ---
 
 ## Methodology
 
 ```
-CASE Dataset  (Feb 17, 2014 – Jul 6, 2022 · ~26,000 rows)
+CASE Dataset  (raw bronze file · DD-MM-YYYY dates · ~24,000 rows)
         │
         ▼  Phase 1 — Pre-processing
-Sort by date
-Drop NaN: Date (13) · Location (49) · AQI (641) · AQI Category (63)
-Replace ~5,000 DNA values → NaN → drop
+Repair typo'd dates → parse day-first
+Drop NaN: Date · Location · AQI · AQI Category  (paper: 13 / 49 / 641 / 63)
+Replace DNA values → NaN → drop  (paper: ~5,000)
 Drop AQI Range column (insignificant)
-Fix spelling errors
+Normalize location names (strip CAMS suffixes, fix spellings) → filter to study area
 Sort date-wise for time series
         │
         ▼  Phase 1 — Comparative EDA
 Split into 3 periods:
-  Pre-COVID   : 2014-02-17 → 2019-12-31
-  Lockdown    : 2020-01-01 → 2020-12-31
+  Pre-COVID    : 2014-02-17 → 2019-12-31
+  Lockdown     : 2020-01-01 → 2020-12-31
   Post-lockdown: 2021-01-01 → 2021-12-31
 Compute max/min/mean/std per period
 Resample monthly · yearly · by location
@@ -101,10 +103,10 @@ Location-wise plots (AQImean/AQImin/AQImax + period shading)
         │
         ▼  Phase 2 — SVR Forecasting
 Train : 2014-02-28 → 2020-12-31
-Test  : 2021-01-01 → 2022-06-01
-MinMaxScaler(0,1) on AQImean
+Test  : 2021-01-01 → 2022-06-01  (truncated to 2021-06-05 by current data)
+MinMaxScaler(0,1) on AQImean · 7-day lag features
 SVR(kernel=RBF, gamma=0.5, C=10, epsilon=0.05)
-Inverse transform → MAPE evaluation (~6.2%)
+Inverse transform → MAPE evaluation
 ```
 
 ---
@@ -113,7 +115,7 @@ Inverse transform → MAPE evaluation (~6.2%)
 
 ```
 aqi-covid19-bangladesh/
-├── AQI_COVID19_Bangladesh.ipynb        ← main reproducible notebook
+├── AQI_COVID19_Bangladesh.ipynb        ← main reproducible notebook (executed)
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
@@ -138,9 +140,9 @@ pip install -r requirements.txt
 ```
 
 ### 3. Dataset
-The dataset is **automatically downloaded** from GitHub in the notebook:
+The dataset is **automatically downloaded** in the notebook from:
 ```
-https://github.com/TSGreen/bangladesh-air-quality
+https://raw.githubusercontent.com/TSGreen/bangladesh-air-quality/master/data/bronze/case/case_data.csv
 ```
 
 ### 4. Run
