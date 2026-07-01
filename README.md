@@ -15,7 +15,7 @@
 
 This repository contains a **reproducible reconstruction** of our IEEE INCET 2023 paper analyzing Air Quality Index (AQI) trends across **10 major cities in Bangladesh** before, during, and after the COVID-19 lockdown, and forecasting AQI using **Support Vector Regression (SVR)**.
 
-> **⚠️ Reproducibility note:** the original research code was lost; this notebook re-implements the methodology exactly as documented in the paper (Sections III–V). The publicly available snapshot of the CASE dataset currently ends **June 5, 2021**, whereas the paper used data through **July 6, 2022**, so the SVR test window here is truncated and the resulting MAPE is not directly comparable to the paper's (details below). Notably, the reconstructed national daily-mean AQI values **exactly match the actual values in the paper's Table II** (e.g. 46.5 on 2014-09-02, 230.75 on 2015-01-01), validating the preprocessing pipeline.
+> **⚠️ Reproducibility note:** the original research code was lost; this notebook re-implements the methodology exactly as documented in the paper (Sections III–V).
 
 ### Key Findings (from the paper)
 - **AQI decreased during the COVID-19 lockdown (2020)** — the highest AQI in 2020 was lower than in 2019 or 2021, and the lockdown-period mean was below the pre-COVID mean
