@@ -153,7 +153,7 @@ Open `AQI_COVID19_Bangladesh.ipynb` and run all cells.
 ## Citation
 
 ```bibtex
-@inproceedings{hossain2023aqi,
+@inproceedings{hossain2023impact,
   title     = {Impact of COVID-19 Lockdowns on Air Quality in Bangladesh:
                Analysis and AQI Forecasting with Support Vector Regression},
   author    = {Hossain, Mohammed Tahmid and Hossain, Afra and
